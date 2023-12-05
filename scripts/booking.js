@@ -24,19 +24,21 @@ document.getElementById("wednesday"), document.getElementById("thursday"), docum
 // when the day buttons are clicked, we will apply the "clicked" class to that element, and update any other relevant variables. Then, we can recalculate the total cost.
 // added challenge: don't update the dayCounter if the same day is clicked more than once. hint: .classList.contains() might be helpful here!
 
-// Add an event listener to all of the days
-// and call the selectedDays function passing in the current day as a parameter
-for (let i = 0; i < daysOfWeek.length; i++) {
-    daysOfWeek[i].addEventListener("click", function() {
-        selectedDays(i);
-        calculate();
+// go through the array and add an event listener to each of the days of the week
+// when the user clicks on a week, call the selectedDays function and pass through the index 
+// or the current day of the week that was clicked.
+daysOfWeek.forEach(function(day, index) {
+    day.addEventListener("click", function() {
+        selectedDays(index);
     });
-}
+});
+
 
 // when the user clicks on a day, it will check first if the user has already clicked it
 // 
 // If the user has clicked the day already, unselect it and subtract one from the total amount of days
 // else, apply the clicked class to the day and add one total day
+// calculate the new price after the user has clicked a day
 function selectedDays(currentDay) {
     if(daysOfWeek[currentDay].classList.contains("clicked")) {
         daysOfWeek[currentDay].classList.remove("clicked");
@@ -46,6 +48,7 @@ function selectedDays(currentDay) {
         daysOfWeek[currentDay].classList.add("clicked");
         amountDays += 1;
     }
+    calculate();
 }
 
 
