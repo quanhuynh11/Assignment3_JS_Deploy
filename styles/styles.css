@@ -259,3 +259,11 @@ form input, form textarea, button {
     margin-left: 174px;
 }
 
+
+/* Thank you message after the user submits the forum */
+
+/* // when the "submit-button" is clicked, the contents of the contact-page are replaced with a single <p> element that reads 
+// "Thank you for your message" in size 24 font. */
+.clear {
+    font-size: 24px;
+}
